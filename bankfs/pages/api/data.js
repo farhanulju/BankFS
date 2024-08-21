@@ -1,6 +1,6 @@
 import { MongoClient, MongoTopologyClosedError } from 'mongodb';
 
-const uri = 'mongodb+srv://vercel-admin-user:wzsRctGyWf3oPNbb@iba29.zhjzy72.mongodb.net/bankfs?retryWrites=true&w=majority';
+const uri = process.env.MONGODB_URI;
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // in milliseconds
