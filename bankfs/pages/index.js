@@ -6,10 +6,12 @@ import { banks, mfsList } from '../lib/utils';
 export default function Home() {
   const [selectedBank, setSelectedBank] = useState(null);
   const [selectedMFS, setSelectedMFS] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch('/api/data', {
         method: 'POST',
@@ -27,6 +29,8 @@ export default function Home() {
       }
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -76,8 +80,8 @@ export default function Home() {
           </div>
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-          Submit
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded" disabled={isLoading}>
+          {isLoading ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </div>
