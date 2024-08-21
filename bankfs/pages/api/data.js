@@ -3,7 +3,7 @@ import { MongoClient, MongoTopologyClosedError } from 'mongodb';
 const uri = process.env.MONGODB_URI;
 
 const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // in milliseconds
+const RETRY_DELAY = 1000; // in millisecond
 
 async function executeWithRetry(operation, retries = MAX_RETRIES) {
   try {

@@ -72,7 +72,7 @@ export default function Home() {
                       ? prevMFS.filter((selectedMFS) => selectedMFS.id !== mfs.id)
                       : [...prevMFS, mfs];
                   });
-                }}
+                }} 
               >
                 <span>{mfs.name}</span>
               </div>
